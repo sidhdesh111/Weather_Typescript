@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/Theme_Provider";
 const City_page = lazy(() => import("./Pages/City_page"));
 const Weather_Dashboard = lazy(() => import("./Pages/Weather_Dashboard"));
@@ -22,7 +22,7 @@ const App = () => {
   });
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Toaster />
       <ThemeProvider defaultTheme="dark">
         <QueryClientProvider client={queryClient}>
@@ -37,7 +37,7 @@ const App = () => {
           {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </QueryClientProvider>
       </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

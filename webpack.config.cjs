@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require("webpack");
 require('dotenv').config();
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -33,7 +33,10 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
-      },
+        generator: {
+          filename: 'assets/images/[name][hash][ext]',
+        },
+      }
     ],
   },
   plugins: [
@@ -42,13 +45,16 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       __OPENWEATHER_API__: JSON.stringify(process.env.OpenWeatherAPI)
-    })
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/assets', to: 'assets' } // copies your assets folder to dist
+      ],
+    }),
   ],
   devServer: {
     historyApiFallback: true,
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
+    static: { directory: path.join(__dirname, 'public') },
     port: 5000,
     hot: true,
   },

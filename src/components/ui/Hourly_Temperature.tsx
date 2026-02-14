@@ -30,7 +30,7 @@ const Hourly_Temperature = ({ data }: HourlyTempType) => {
         <CardTitle>Today's Temperature</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-[12.5rem] w-full [&>svg]:!focus:outline-none">
+        <div className="h-50 w-full [&>svg]:!focus:outline-none">
           <ResponsiveContainer
             width={"100%"}
             height={"100%"}

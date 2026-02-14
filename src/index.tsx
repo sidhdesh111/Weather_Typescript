@@ -1,7 +1,9 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App";
+
+const App = lazy(() => import("./App"));
 import "./index.css";
+import LoadingSkeleton from "./components/LoadingSkeleton";
 
 const container = document.getElementById("root");
 
@@ -11,4 +13,8 @@ if (!container) {
 
 const root = createRoot(container);
 
-root.render(<App />);
+root.render(
+  <Suspense fallback={<LoadingSkeleton />}>
+    <App />
+  </Suspense>,
+);

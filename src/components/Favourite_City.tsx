@@ -27,7 +27,7 @@ const Favourite_City = () => {
 
   return (
     <>
-      <h1 className="text-xl font-[500] tracking-tight">Favourites City</h1>
+      <h1 className="text-xl font-medium tracking-tight">Favourites City</h1>
 
       <ScrollArea className="w-full py-4">
         <div className="flex gap-4">

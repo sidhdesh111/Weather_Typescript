@@ -45,7 +45,7 @@ const SearchBar = () => {
   return (
     <>
       <Button
-        className="relative w-fit lg:w-full justify-start text-sm text-muted-foreground sm:pr-12  lg:w-64"
+        className="relative w-fit lg:w-64 justify-start text-sm text-muted-foreground sm:pr-12"
         onClick={() => setOpen((prev) => !prev)}
         variant={"outline"}
       >

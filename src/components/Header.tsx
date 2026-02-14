@@ -10,14 +10,14 @@ const Header = () => {
   const isDark = theme === "dark";
 
   return (
-    <header className="w-full sticky top-0 z-50 py-4 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="!container mx-auto px-6 lg:px-10  flex items-center justify-between">
+    <header className="w-full sticky top-0 z-50 py-4 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+      <div className="container! mx-auto px-6 lg:px-10 flex items-center justify-between">
         <Link to={"/"}>
           <img
             src={
               isDark
-                ? "/assets/Climate_dark_mode_logo.png"
-                : "/assets/Climate_light_mode_logo.png"
+                ? "./assets/Climate_dark_mode_logo.png"
+                : "./assets/Climate_light_mode_logo.png"
             }
             alt="Climate Logo"
             className="h-12"
