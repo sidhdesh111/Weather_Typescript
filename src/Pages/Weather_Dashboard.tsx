@@ -1,19 +1,23 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Button } from "../components/ui/button";
 import { AlertCircleIcon, MapPin, RefreshCw } from "lucide-react";
 import Use_GeoLocation from "../Hooks/Use_GeoLocation";
-import LoadingSkeleton from "../components/LoadingSkeleton";
 import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert";
 import {
   UseForeCastQuery,
   UseReservedGeoQuery,
   UseWeatherQuery,
 } from "../Hooks/Use_WeatherData";
-import CurrentWeather from "../components/CurrentWeather";
-import Hourly_Temperature from "../components/ui/Hourly_Temperature";
-import WeatherDetails from "../components/WeatherDetails";
-import WeatherForcast from "../components/WeatherForcast";
-import Favourite_City from "../components/Favourite_City";
+
+const Favourite_City = lazy(() => import("../components/Favourite_City"));
+const WeatherDetails = lazy(() => import("../components/WeatherDetails"));
+
+const WeatherForcast = lazy(() => import("../components/WeatherForcast"));
+const LoadingSkeleton = lazy(() => import("../components/LoadingSkeleton"));
+const Hourly_Temperature = lazy(
+  () => import("../components/ui/Hourly_Temperature"),
+);
+const CurrentWeather = lazy(() => import("../components/CurrentWeather"));
 
 const Weather_Dashboard = () => {
   const {
@@ -84,7 +88,7 @@ const Weather_Dashboard = () => {
   }
 
   return (
-    <div className=" space-y-4">
+    <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h1>My Location</h1>
         <Button
@@ -99,24 +103,34 @@ const Weather_Dashboard = () => {
       </div>
       <div>
         <div className="">
-          <Favourite_City />
+          <Suspense fallback={<LoadingSkeleton />}>
+            <Favourite_City />
+          </Suspense>
         </div>
       </div>
       <div className="grid gap-6">
         <div className="flex flex-col lg:flex-row justify-between gap-4">
-          <CurrentWeather
-            data={WeatherQuery?.data!}
-            locationName={LocationName[0]}
-          />
+          <Suspense fallback={<LoadingSkeleton />}>
+            <CurrentWeather
+              data={WeatherQuery?.data!}
+              locationName={LocationName[0]}
+            />
+          </Suspense>
           {/* current Weather */}
           {/* hourly temp  */}
-          <Hourly_Temperature data={ForcastQuery?.data!} />
+          <Suspense fallback={<LoadingSkeleton />}>
+            <Hourly_Temperature data={ForcastQuery?.data!} />
+          </Suspense>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid justify-between grid-cols-1 lg:grid-cols-2 gap-4">
           {/* details  */}
-          <WeatherDetails data={WeatherQuery.data!} />
+          <Suspense fallback={<LoadingSkeleton />}>
+            <WeatherDetails data={WeatherQuery.data!} />
+          </Suspense>
           {/* forecast  */}
-          <WeatherForcast data={ForcastQuery.data!} />
+          <Suspense fallback={<LoadingSkeleton />}>
+            <WeatherForcast data={ForcastQuery.data!} />
+          </Suspense>
         </div>
       </div>
     </div>

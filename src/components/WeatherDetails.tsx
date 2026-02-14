@@ -59,7 +59,7 @@ const WeatherDetails = ({ data }: WeatherDetailsType) => {
     <Card>
       <CardHeader>
         <CardTitle>Weather Details</CardTitle>
-        <CardContent className="pt-4">
+        <CardContent className="pt-4 px-0">
           <div className="grid sm:grid-cols-2 gap-6">
             {Details.map((items, index) => (
               <div key={index} className="flex items-center gap-3 rounded-lg border p-4">

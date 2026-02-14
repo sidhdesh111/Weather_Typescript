@@ -26,7 +26,6 @@ const SearchBar = () => {
   const { history, AddStorage, ClearStorage } = Use_SearchHistory();
   const { Fav, removeFav } = Use_Favorite();
 
-
   const HandleSelect = (cityData: string) => {
     const [lat, lon, name, country] = cityData.split("|");
 
@@ -46,7 +45,7 @@ const SearchBar = () => {
   return (
     <>
       <Button
-        className="relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
+        className="relative w-fit lg:w-full justify-start text-sm text-muted-foreground sm:pr-12  lg:w-64"
         onClick={() => setOpen((prev) => !prev)}
         variant={"outline"}
       >

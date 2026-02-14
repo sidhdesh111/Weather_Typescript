@@ -10,8 +10,8 @@ const Header = () => {
   const isDark = theme === "dark";
 
   return (
-    <header className=" sticky top-0 z-50 py-4 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-12  flex items-center justify-between">
+    <header className="w-full sticky top-0 z-50 py-4 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="!container mx-auto px-6 lg:px-10  flex items-center justify-between">
         <Link to={"/"}>
           <img
             src={
@@ -23,12 +23,13 @@ const Header = () => {
             className="h-12"
           />
         </Link>
-        <div className="flex items-center gap-6">
+
+        <div className="flex items-center justify-between gap-4">
           {/* search */}
           <SearchBar />
           {/* theme toggle */}
           <div
-            className={`cursor-pointer transition-transform duration-500 ${isDark ? "rotate-180" : "rotate-none"}`}
+            className={`ml-2cursor-pointer transition-transform duration-500 ${isDark ? "rotate-180" : "rotate-none"}`}
             onClick={() => setTheme(isDark ? "light" : "dark")}
           >
             {isDark ? (

@@ -8,10 +8,10 @@ require('dotenv').config();
 module.exports = {
   entry: './src/index.tsx',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].js",         // 🔥 important
+    chunkFilename: "[name].chunk.js", // 🔥 for lazy chunks
+    path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: '/',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -51,5 +51,10 @@ module.exports = {
     },
     port: 5000,
     hot: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
   },
 };
