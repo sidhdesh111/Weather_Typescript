@@ -8,8 +8,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './src/index.tsx',
   output: {
-    filename: "[name].js",         // 🔥 important
-    chunkFilename: "[name].chunk.js", // 🔥 for lazy chunks
+    filename: "[name].js",        
+    chunkFilename: "[name].chunk.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -48,7 +48,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'public/assets', to: 'assets' } // copies your assets folder to dist
+        { from: 'public/assets', to: 'assets' } 
       ],
     }),
   ],
